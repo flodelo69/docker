@@ -18,9 +18,6 @@ RUN apt-get install -y apt-utils openssh-server vim tar sudo
 # Fix PAM login issue with sshd
 RUN sed -i 's/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g' /etc/pam.d/sshd
 
-# Set locale (fix the locale warnings)
-RUN localedef -v -c -i en_US -f UTF-8 en_US.UTF-8 || :
-
 # Copy the files into the container
 ADD . /src
 
