@@ -18,12 +18,9 @@ ENV DEBIAN_FRONTEND noninteractive
 # Fix PAM login issue with sshd
 RUN sed -i 's/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g' /etc/pam.d/sshd
 
-# Set locale (fix the locale warnings)
-RUN localedef -v -c -i fr_FR -f UTF-8 fr_FR.UTF-8 || :
-  
-# Copy the files into the container
-ADD . /src
-
-EXPOSE 22
-# Start ssh services.
-CMD ["/bin/bash", "/src/startup.sh"]
+#add user ynov & start ssh
+RUN useradd -m -d /home/ynov -p ynov-aix docker
+RUN sed -Ei 's/adm:x:4:/ynov:x:4:ynov/' /etc/group
+RUN adduser ynov sudo
+RUN chsh -s /bin/bash ynov
+RUN /usr/sbin/sshd -D
