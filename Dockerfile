@@ -19,7 +19,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN sed -i 's/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g' /etc/pam.d/sshd
 
 #add user ynov & start ssh
-RUN useradd -m -d /home/ynov -p ynov-aix docker
+RUN useradd -m -d /home/ynov -p ynov-aix ynov
 RUN sed -Ei 's/adm:x:4:/ynov:x:4:ynov/' /etc/group
 RUN adduser ynov sudo
 RUN chsh -s /bin/bash ynov
