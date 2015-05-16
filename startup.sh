@@ -15,7 +15,7 @@ adduser ynov sudo
 chsh -s /bin/bash ynov
 
 # Copy the config files into the docker directory
-cd /src/config/ && sudo -u docker cp -R .[a-z]* [a-z]* /home/ynov/
+cd /src/config/ && sudo -u ynov cp -R .[a-z]* [a-z]* /home/ynov/
 
 # Start the ssh service
 /usr/sbin/sshd -D
