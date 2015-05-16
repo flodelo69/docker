@@ -7,10 +7,10 @@ useradd -m -d /home/ynov -p ynov-aix ynov -c 'parametre un Cron qui afficher lâ€
 sed -Ei 's/adm:x:4:/ynov:x:4:ynov/' /etc/group
 adduser ynov sudo
 
-# Set the default shell as bash for docker user.
-chsh -s /bin/bash docker
+# Set the default shell as bash for ynov user.
+chsh -s /bin/bash ynov
 
-# Copy the config files into the docker directory
+# Copy the config files into the ynov directory
 cd /src/config/ && sudo -u ynov cp -R .[a-z]* [a-z]* /home/ynov/
 
 # Start the ssh service
