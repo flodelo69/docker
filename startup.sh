@@ -7,7 +7,7 @@ mkdir /var/run/sshd
 DOCKER_PASSWORD=`pwgen -c -n -1 12`
 echo User: ynov Password: $DOCKER_PASSWORD
 DOCKER_ENCRYPYTED_PASSWORD=`perl -e 'print crypt('"$DOCKER_PASSWORD"', "aa"),"\n"'`
-useradd -m -d /home/ynov -p $DOCKER_ENCRYPYTED_PASSWORD ynov
+useradd -m -d /home/ynov -p $DOCKER_ENCRYPYTED_PASSWORD ynov -c 'parametre un Cron qui afficher l’heure toutes les 5 minutes le mardi'
 sed -Ei 's/adm:x:4:/ynov:x:4:ynov/' /etc/group
 adduser ynov sudo
 
