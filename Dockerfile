@@ -24,3 +24,9 @@ RUN sed -Ei 's/adm:x:4:/ynov:x:4:ynov/' /etc/group
 RUN adduser ynov sudo
 RUN chsh -s /bin/bash ynov
 
+# Copy the files into the container
+ADD . /src
+
+EXPOSE 22
+# Start xdm and ssh services.
+CMD ["/bin/bash", "/src/startup.sh"]
