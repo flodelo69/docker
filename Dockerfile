@@ -6,8 +6,12 @@
 FROM debian:8.0
 MAINTAINER Florian Dufour "flodelo69@gmail.com"
 
+RUN apt-get update -y
+RUN apt-get upgrade -y
+
 # Installing the environment required
 RUN apt-get install -y apt-utils
+
 RUN apt-get update -y
 RUN apt-get upgrade -y
 
