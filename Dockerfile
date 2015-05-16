@@ -13,7 +13,7 @@ RUN apt-get upgrade -y
 ENV DEBIAN_FRONTEND noninteractive
 
 # Installing the environment required: ssh, vim.
-RUN apt-get install -y openssh-server vim tar sudo
+RUN apt-get install -y apt-utils openssh-server vim tar sudo
 
 # Fix PAM login issue with sshd
 RUN sed -i 's/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g' /etc/pam.d/sshd
