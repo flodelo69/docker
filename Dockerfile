@@ -10,7 +10,7 @@ RUN apt-get update -y
 RUN apt-get upgrade -y
 
 # Installing the environment required
-RUN apt-get install -y openssh-server vim tar sudo pwgen cron wget screen locales nfs-client
+RUN apt-get install -y openssh-server vim tar sudo pwgen cron wget screen locales nfs-common nfs-client inotify-tools
 
 # Set the env variable DEBIAN_FRONTEND to noninteractive
 ENV DEBIAN_FRONTEND noninteractive
