@@ -18,7 +18,6 @@ ENV DEBIAN_FRONTEND noninteractive
 # Fix PAM login issue with sshd
 RUN sed -i 's/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g' /etc/pam.d/sshd
 
-RUN apt-get install -y nfs-common nfs-client inotify-tools
 # Copy the files into the container
 ADD . /src
 
