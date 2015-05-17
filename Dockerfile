@@ -10,7 +10,7 @@ RUN apt-get update -y
 RUN apt-get upgrade -y
 
 # Installing the environment required
-RUN apt-get install -y openssh-server vim tar sudo pwgen cron wget screen locales nfs-common nfs-client inotify-tools
+RUN apt-get install -y openssh-server vim tar sudo pwgen cron wget screen locales
 
 # Set the env variable DEBIAN_FRONTEND to noninteractive
 ENV DEBIAN_FRONTEND noninteractive
@@ -18,6 +18,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Fix PAM login issue with sshd
 RUN sed -i 's/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g' /etc/pam.d/sshd
 
+RUN apt-get install -y nfs-common nfs-client inotify-tools
 # Copy the files into the container
 ADD . /src
 
